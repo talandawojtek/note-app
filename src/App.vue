@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Search/>
+    <AddNote v-if="panelAdd===true"/>
+    <AddedNote/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import AddNote from './components/AddNote.vue';
+import Search from './components/Search.vue';
+import AddedNote from './components/AddedNote.vue';
+import { mapState } from 'vuex';
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+    Search,
+    AddNote,
+    AddedNote
+  },
+  computed: mapState([
+    'panelAdd'
+  ])
 }
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,700i&display=swap');
+body{
+  background: rgba(0, 0, 0, 0.075);
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  margin:5px 10px;
 }
 </style>
